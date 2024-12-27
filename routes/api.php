@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AddressController;
 use App\Http\Controllers\GuestController;
 use App\Http\Controllers\PhoneController;
 use Illuminate\Http\Request;
@@ -15,3 +16,5 @@ Route::apiResource('guests',GuestController::class) //cria rotas para cada um do
 Route::apiResource('guests.phones', PhoneController::class);
 // dependencia de guest.id para crud do(s) seu(s) respectivo(s) telefone(s)
 // php artisan route:list para listá-las
+
+Route::apiResource('guests.addresses', AddressController::class);

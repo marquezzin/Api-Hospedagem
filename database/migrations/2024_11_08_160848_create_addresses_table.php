@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('addresses', function (Blueprint $table) {
             $table->id();
             $table->foreignId('guest_id')->constrained('guests');
-            $table->string('zipcode',9); //CEP    
+            $table->string('zipcode',9); //CEP -> Máx 9 caracteres
             $table->string('city');
             $table->string('state');
             $table->string('street'); //Rua / Logradouro
