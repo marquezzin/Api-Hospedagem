@@ -18,7 +18,7 @@
 </head>
 <body class="antialiased">
     <div id="app" class="margin:0"> {{-- Elemento com o id "app" --}}
-        <login-component></login-component>
+        <app-component></app-component>
     </div>
 </body>
 </html>
