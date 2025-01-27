@@ -8,6 +8,7 @@ import './bootstrap';
 import { createApp } from 'vue';
 import router from './router/index'; 
 import AppComponent from './App.vue';
+import { createPinia } from 'pinia';
 
 /**
  * Next, we will create a fresh Vue application instance. You may then begin
@@ -22,8 +23,7 @@ const app = createApp({
     }
 });
 
-
-
+const pinia = createPinia();
 
 
 /**
@@ -43,6 +43,7 @@ const app = createApp({
  * an "id" attribute of "app". This element is included with the "auth"
  * scaffolding. Otherwise, you will need to add an element yourself.
  */
+app.use(pinia);
 
 // Isso permite que a navegação entre rotas seja gerenciada através do arquivo ./router/index.js.
 app.use(router);

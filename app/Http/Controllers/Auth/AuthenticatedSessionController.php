@@ -20,9 +20,10 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
+        $user = auth()->user()->load('guest');
         return response()->json([
             'message' => 'Login realizado com sucesso!',
-            'user' => auth()->user(),
+            'user' => $user,
         ]);
     }
 

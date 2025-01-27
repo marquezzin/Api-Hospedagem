@@ -1,32 +1,23 @@
 <script setup>
 import { ref } from 'vue';
 import axios from 'axios';
+import { useRouter } from 'vue-router';
+import { useUserStore } from '@/stores/userStore';
 
 const email = ref('');
 const password = ref('');
+const router   = useRouter();
+const userStore = useUserStore(); 
 
 const handleLogin = async () => {
   if (email.value && password.value) {
     try {
-      // Obtém o token CSRF
-      await axios.get('/sanctum/csrf-cookie',{ withCredentials: true });
-     
-      const response = await axios.post('/login', {
-        email: email.value,
-        password: password.value,
-      }, {
-        headers: {
-            'Accept': 'application/json', // Importante para receber JSON do Laravel
-        },
-        withCredentials: true, // Garante que os cookies sejam enviados
-        });
+      // Chama a ação de login da userStore
+      await userStore.login({ email: email.value, password: password.value });
 
-      if (response.status === 200) {
-        console.log(response.data)
-        alert('Login realizado com sucesso!');
-      }
+      alert('Login realizado com sucesso!');
+      router.push({ path: '/dashboard' }); // Redireciona para o dashboard
     } catch (error) {
-      console.error('Erro ao realizar login:', error.response?.data || error.message);
       alert('Erro ao realizar login. Verifique suas credenciais.');
     }
   } else {
