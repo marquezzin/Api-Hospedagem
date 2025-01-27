@@ -18,6 +18,7 @@ import AppComponent from './App.vue';
 const app = createApp({
     components: {
         AppComponent
+        //<app-component></app-component> chamado no blade
     }
 });
 
@@ -42,7 +43,10 @@ const app = createApp({
  * an "id" attribute of "app". This element is included with the "auth"
  * scaffolding. Otherwise, you will need to add an element yourself.
  */
-// // Usa o router
-// app.use(router);
+
+// Isso permite que a navegação entre rotas seja gerenciada através do arquivo ./router/index.js.
 app.use(router);
+
+//Monta a aplicação Vue no elemento HTML que possui o atributo id="app". Este elemento está definido no arquivo Blade
+//O Vue substitui <app-component> pelo conteúdo do componente AppComponent.
 app.mount('#app');

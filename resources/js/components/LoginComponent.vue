@@ -22,7 +22,7 @@ const handleLogin = async () => {
         });
 
       if (response.status === 200) {
-        console.log(response)
+        console.log(response.data)
         alert('Login realizado com sucesso!');
       }
     } catch (error) {
