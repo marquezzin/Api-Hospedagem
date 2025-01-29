@@ -33,3 +33,5 @@ Route::post('reservations/{reservation}/guests/{guest}/checkout', [ReservationCo
 
 // Rota para atualizar o tipo de um hóspede
 Route::post('reservations/{reservation}/guests/{guest}/updateType', [ReservationController::class, 'updateType']);
+
+Route::get('/guests/{guest}/reservations', [GuestController::class, 'getReservas']);

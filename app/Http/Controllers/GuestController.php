@@ -84,4 +84,13 @@ class GuestController extends Controller
 
         return response()->noContent();
     }
+
+    /**
+     * Retorna todas as reservas associadas a um Guest pelo guest_id.
+     */
+    public function getReservas(Guest $guest)
+    {
+        $reservas = $guest->reservations()->get();
+        return response()->json($reservas, 200);
+    }
 }
