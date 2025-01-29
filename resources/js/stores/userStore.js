@@ -1,6 +1,7 @@
 import { defineStore } from 'pinia';
 import axios from 'axios';
 
+
 export const useUserStore = defineStore('user', {
   state: () => ({
     user: null, // Armazena os dados do usuário logado
@@ -45,8 +46,9 @@ export const useUserStore = defineStore('user', {
             withCredentials: true,
         });
 
-        if (response.status === 200) {
+        if (response.status === 204) {
             this.user = null; // Reseta o estado do usuário
+                       
             return true;
         }
         } catch (error) {

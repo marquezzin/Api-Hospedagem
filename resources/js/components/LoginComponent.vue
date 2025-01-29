@@ -8,6 +8,7 @@ const email = ref('');
 const password = ref('');
 const router   = useRouter();
 const userStore = useUserStore(); 
+import { toast } from 'vue3-toastify';
 
 const handleLogin = async () => {
   if (email.value && password.value) {
@@ -15,13 +16,33 @@ const handleLogin = async () => {
       // Chama a ação de login da userStore
       await userStore.login({ email: email.value, password: password.value });
 
-      alert('Login realizado com sucesso!');
-      router.push({ path: '/dashboard' }); // Redireciona para o dashboard
+      // Exibe notificação de sucesso
+      toast.success("Login realizado com sucesso!", {
+        autoClose: 3000,
+        position: "top-left",
+        theme: "colored",
+      });
+
+      // Redireciona para o dashboard após um pequeno delay
+      setTimeout(() => {
+        router.push({ path: '/dashboard' });
+      }, 1000);
+
     } catch (error) {
-      alert('Erro ao realizar login. Verifique suas credenciais.');
+      // Exibe erro em caso de falha no login
+      toast.error("Erro ao realizar login. Verifique suas credenciais.", {
+        autoClose: 3000,
+        position: "top-left",
+        theme: "colored",
+      });
     }
   } else {
-    alert('Por favor, preencha todos os campos.');
+    // Exibe erro caso os campos não estejam preenchidos
+    toast.warning("Por favor, preencha todos os campos.", {
+      autoClose: 3000,
+      position: "top-left",
+      theme: "colored",
+    });
   }
 };
 </script>

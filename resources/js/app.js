@@ -9,6 +9,9 @@ import { createApp } from 'vue';
 import router from './router/index'; 
 import AppComponent from './App.vue';
 import { createPinia } from 'pinia';
+import 'vue3-toastify/dist/index.css';
+
+
 
 /**
  * Next, we will create a fresh Vue application instance. You may then begin
@@ -24,6 +27,7 @@ const app = createApp({
 });
 
 const pinia = createPinia();
+
 
 
 /**

@@ -51,7 +51,7 @@ console.log(user);
        <!-- Botão centralizado -->
        <div class="button-container">
         <button class="reservation-button" @click="goToReservation">
-          Minha Reserva
+          <span>Minhas Reservas</span>
         </button>
       </div>
     </div>
@@ -65,7 +65,7 @@ console.log(user);
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('/public/images/hotel.jpg') no-repeat;
+  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('/public/images/hotel.jpg') no-repeat;
   background-size: cover;
   margin: 0;
   border: none;
