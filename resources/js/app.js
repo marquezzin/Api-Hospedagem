@@ -10,6 +10,7 @@ import router from './router/index';
 import AppComponent from './App.vue';
 import { createPinia } from 'pinia';
 import 'vue3-toastify/dist/index.css';
+import FontAwesomeIcon from './fontawesome'; // Importa a configuração
 
 
 
@@ -27,7 +28,7 @@ const app = createApp({
 });
 
 const pinia = createPinia();
-
+app.component('FontAwesomeIcon', FontAwesomeIcon); // Registra o componente globalmente
 
 
 /**
