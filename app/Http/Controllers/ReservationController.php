@@ -87,7 +87,7 @@ class ReservationController extends Controller
         return response()->json([
             'success' => true,
             'message' => 'Hospéde adicionado realizado com sucesso.',
-            'data' => $reservation->load(['guests'])
+            'data' => $reservation
         ]);
         
     }

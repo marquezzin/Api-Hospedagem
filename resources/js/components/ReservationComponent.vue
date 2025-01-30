@@ -2,12 +2,10 @@
 import { computed, onMounted } from 'vue';
 import { useUserStore } from '@/stores/userStore';
 import { useReservationStore } from '@/stores/reservationStore';
+import router from '../router';
 
 const reservationStore = useReservationStore();
 const userStore = useUserStore();
-const reservation = computed(() => reservationStore.reservation);
-
-
 // Computed para acessar o estado do usuário
 const user = computed(() => userStore.user);
 const reservations = computed(() => reservationStore.reservations);
@@ -46,8 +44,9 @@ const formatDateTime = (dateTime) => {
   });
 };
 
-console.log(user.value);
-console.log(reservations.value);
+const goToCreateReservation = () => {
+  router.push('/new-reservation')
+}
 
 </script>
 
@@ -91,8 +90,12 @@ console.log(reservations.value);
             Última atualização: <strong>{{ formatDateTime(reservation.updated_at) }}</strong>
           </p>
         </div>
+          <button @click="goToCreateReservation" class="create-reservation-btn">
+          + Criar Reserva
+        </button>
       </div>
     </div>
+    
   </div>
 </template>
 
@@ -124,6 +127,25 @@ console.log(reservations.value);
   font-weight: bold;
   margin-bottom: 20px;
   color: #333;
+}
+/* Botão Criar Reserva */
+.create-reservation-btn {
+  background: #007bff;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s;
+  width: auto; /* Garante que o botão não ocupe toda a largura */
+  min-width: 200px; /* Evita que o botão fique muito pequeno */
+  text-align: center;
+}
+
+.create-reservation-btn:hover {
+  background: #0056b3;
 }
 
 /* Lista de reservas */

@@ -15,18 +15,15 @@ const handleLogin = async () => {
     try {
       // Chama a ação de login da userStore
       await userStore.login({ email: email.value, password: password.value });
-
+      router.push({ path: '/dashboard' });
       // Exibe notificação de sucesso
-      toast.success("Login realizado com sucesso!", {
+      setTimeout(() => {
+        toast.success("Login realizado com sucesso!", {
         autoClose: 3000,
         position: "top-left",
         theme: "colored",
       });
-
-      // Redireciona para o dashboard após um pequeno delay
-      setTimeout(() => {
-        router.push({ path: '/dashboard' });
-      }, 1000);
+      }, 250);
 
     } catch (error) {
       // Exibe erro em caso de falha no login

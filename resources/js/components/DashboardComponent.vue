@@ -40,7 +40,7 @@ console.log(user);
         </div>
         <div class="dashboard-item">
           <span class="label">Data de Nascimento:</span>
-          <span class="value">{{ user?.guest?.birthdate }}</span>
+          <span class="value">{{ new Date(user?.guest?.birthdate).toLocaleDateString() }}</span>
         </div>
         <div class="dashboard-item">
           <span class="label">Conta Criada em:</span>

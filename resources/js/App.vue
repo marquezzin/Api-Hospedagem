@@ -15,12 +15,14 @@ const showDropdown = ref(false);
 const handleLogout = async () => {
   try {
     await userStore.logout();
-    toast.success('Logout realizado com sucesso!', { autoClose: 1000 });
+    
     showDropdown.value = false;
-    // Pequeno atraso antes de mudar de página para exibir o toast
+    router.push('/');
     setTimeout(() => {
-      router.push('/');
+      toast.success('Logout realizado com sucesso!', { autoClose: 1000 });
     }, 1000);
+    
+    
   } catch (error) {
     toast.error('Erro ao deslogar. Tente novamente.');
   }
@@ -38,7 +40,7 @@ const goToDashboard = () => {
 const toggleDropdown = () => {
   showDropdown.value = !showDropdown.value;
 };
-console.log(user)
+
 </script>
 
 <template>
