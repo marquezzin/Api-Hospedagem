@@ -1,17 +1,30 @@
 <script setup>
 import { computed, onMounted } from 'vue';
-import { useUserStore } from '@/stores/userStore';import { useRouter } from 'vue-router';
+import { useUserStore } from '@/stores/userStore';
+import { useRouter } from 'vue-router';
+import { usePhoneStore } from '@/stores/phoneStore';
+import { useAddressStore } from '@/stores/addressStore';
 
 const router   = useRouter();
 const userStore = useUserStore();
+const phoneStore = usePhoneStore();
+const addressStore = useAddressStore();
 
 // Computed para acessar o estado do usuário
 const user = computed(() => userStore.user);
+const phones = computed(() => phoneStore.phones);
+const addresses = computed(() => addressStore.addresses);
 
 // Busca o usuário autenticado ao recarregar a pagina
 onMounted(async () => {
   if (!userStore.user) {
     await userStore.fetchUser(); // Sem o await: o código continuaria a execução sem esperar que os dados do usuário fossem carregados.
+  }
+  // Obtém o guestId do usuário logado
+  const guestId = user.value?.guest?.id;
+  if (guestId) {
+    await phoneStore.fetchPhone(guestId); // Busca os telefones 
+    await addressStore.fetchAddress(guestId); // Busca os endereços
   }
 });
 
@@ -46,8 +59,29 @@ console.log(user);
           <span class="label">Conta Criada em:</span>
           <span class="value">{{ new Date(user?.created_at).toLocaleDateString() }}</span>
         </div>
-       
+       <!-- Telefones -->
+       <div class="dashboard-item full-width">
+          <span class="label">Telefones:</span>
+          <ul v-if="phones.length">
+            <li v-for="phone in phones" :key="phone.id">
+              {{ phone.type }}: {{ phone.number }}
+            </li>
+          </ul>
+          <p v-else>Nenhum telefone cadastrado.</p>
+        </div>
       </div>
+      <!-- Endereços -->
+      <div class="dashboard-item full-width addresses">
+          <span class="label">Endereços:</span>
+          <ul v-if="addresses.length">
+            <li v-for="address in addresses" :key="address.id">
+              {{ address.street }}, Nº {{ address.number }} - {{ address.district }} <br>
+              {{ address.city }} - {{ address.state }} - CEP: {{ address.zipcode }}
+              <span v-if="address.complement"> ({{ address.complement }})</span>
+            </li>
+          </ul>
+          <p v-else>Nenhum endereço cadastrado.</p>
+        </div>
        <!-- Botão centralizado -->
        <div class="button-container">
         <button class="reservation-button" @click="goToReservation">
@@ -108,6 +142,16 @@ console.log(user);
   border: 1px solid #ddd;
   border-radius: 6px;
   padding: 10px;
+}
+
+.dashboard-item.full-width {
+  grid-column: span 2;
+  height: 100px;
+  overflow-y: auto;
+}
+
+.dashboard-item.full-width.addresses {
+  margin-top: 15px;
 }
 
 .label {
