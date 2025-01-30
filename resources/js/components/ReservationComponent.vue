@@ -90,10 +90,11 @@ const goToCreateReservation = () => {
             Última atualização: <strong>{{ formatDateTime(reservation.updated_at) }}</strong>
           </p>
         </div>
-          <button @click="goToCreateReservation" class="create-reservation-btn">
+          
+      </div>
+      <button @click="goToCreateReservation" class="create-reservation-btn">
           + Criar Reserva
         </button>
-      </div>
     </div>
     
   </div>
@@ -150,6 +151,8 @@ const goToCreateReservation = () => {
 
 /* Lista de reservas */
 .reservations-list {
+  height: 650px;
+  overflow-y: auto;
   display: flex;
   flex-direction: column;
   gap: 15px;
