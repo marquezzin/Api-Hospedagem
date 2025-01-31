@@ -3,11 +3,16 @@ import LoginComponent from '../components/LoginComponent.vue';
 import DashboardComponent from '../components/DashboardComponent.vue';
 import ReservationComponent from "../components/ReservationComponent.vue";
 import NewReservationComponent from "../components/NewReservationComponent.vue";
+import RegisterComponent from "../components/RegisterComponent.vue";
 
 const routes = [
     {
         path: '/',
         component: LoginComponent
+    },
+    {
+        path: '/register',
+        component: RegisterComponent
     },
     {
         path: '/dashboard',

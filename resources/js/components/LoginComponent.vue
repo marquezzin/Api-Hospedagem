@@ -42,6 +42,10 @@ const handleLogin = async () => {
     });
   }
 };
+
+const goToRegister = () =>{
+  router.push('/register')
+}
 </script>
 
 <template>
@@ -60,7 +64,9 @@ const handleLogin = async () => {
         </div>
         <button type="submit" class="login-button">Entrar</button>
       </form>
-      <p class="register-link">Não tem uma conta? <a href="#">Cadastre-se</a></p>
+      <p class="register-link">
+        Não tem uma conta? <a href="#" @click.prevent="goToRegister">Cadastre-se</a>
+      </p>
     </div>
   </div>
 </template>
@@ -130,7 +136,7 @@ input {
 .login-button {
   width: 100%;
   padding: 10px;
-  background-color: #4CAF50;
+  background-color: #007BFF;
   color: white;
   border: none;
   border-radius: 10px;
@@ -139,7 +145,7 @@ input {
 }
 
 .login-button:hover {
-  background-color: #45a049;
+  background-color: #0056b3;
 }
 
 .register-link {
@@ -149,7 +155,7 @@ input {
 }
 
 .register-link a {
-  color: #4CAF50;
+  color: #007BFF;
   text-decoration: none;
 }
 

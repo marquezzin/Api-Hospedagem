@@ -134,7 +134,7 @@ const goToCreateReservation = () => {
   background: #007bff;
   color: white;
   border: none;
-  padding: 12px 20px;
+  padding: 14px 20px;
   font-size: 16px;
   font-weight: bold;
   border-radius: 6px;
@@ -143,6 +143,7 @@ const goToCreateReservation = () => {
   width: auto; /* Garante que o botão não ocupe toda a largura */
   min-width: 200px; /* Evita que o botão fique muito pequeno */
   text-align: center;
+  margin-top: 5px;
 }
 
 .create-reservation-btn:hover {

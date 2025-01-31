@@ -13,7 +13,10 @@ Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
 });
 
 Route::apiResource('guests',GuestController::class) //cria rotas para cada um dos métodos
+->except(['store'])
 ->middleware(['auth:sanctum']); 
+
+Route::post('/guests', [GuestController::class, 'store']); // Cadastro público, sem autenticacao
 
 Route::apiResource('guests.phones', PhoneController::class);
 // dependencia de guest.id para crud do(s) seu(s) respectivo(s) telefone(s)

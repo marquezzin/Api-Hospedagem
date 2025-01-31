@@ -67,6 +67,18 @@ export const useUserStore = defineStore('user', {
         this.user = null;
       }
     },
+
+    // Obtém o usuário autenticado ao carregar a aplicação
+    async registerUser(userData) {
+      try {
+       
+        const response = await axios.post('/api/guests',userData, { withCredentials: true });
+        return response.data;
+      } catch (error) {
+        console.error('Erro ao criar usuário autenticado:', error.response?.data || error.message);
+        throw error;
+      }
+    },
   },
 
   getters: {

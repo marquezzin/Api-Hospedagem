@@ -29,7 +29,7 @@ class GuestStoreRequest extends FormRequest
             'password'=>['required','string','min:8','confirmed',Password::min(8)->letters()->uncompromised()->numbers()->mixedCase()], //confirmed indica a necessidade de password_confirmation
             'name' => 'required|string|min:3|max:255',
             'birthdate' => 'required|date|before:now',
-            'cpf' => 'required_if:is_foreigner,0|max:11',
+            'cpf' => 'required_if:is_foreigner,0|max:14', //14 com hifen
             'rg' => 'required_if:is_foreigner,0|max:15',
             'is_foreigner' => 'required|boolean',
             'passport' => 'required_if:is_foreigner,1',
