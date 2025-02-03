@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Laravel</title>
+    <title>Hosting System</title>
 
      @vite(['resources/js/app.js']) {{-- botar o css se for necessario --}}
 <style>
