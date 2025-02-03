@@ -11,4 +11,6 @@
  
 - npm install --legacy-peer-deps
 - composer install --legacy-peer-deps
+- npm run dev
+- php artisan serve
 
